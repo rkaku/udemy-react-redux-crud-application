@@ -1,4 +1,4 @@
-// Actions
+// Actions Keys
 import { INCREMENT, DECREMENT } from '../actions';
 
 
@@ -6,22 +6,25 @@ import { INCREMENT, DECREMENT } from '../actions';
 const initialState = { value: 0 };
 
 
-// Reducer
+// Count Reducer
 export default (state = initialState, action) => {
 
-  // Action -> State
+  // Actions Types
   switch (action.type) {
 
-    // Plus One
+    // Increment Type
     case INCREMENT:
+      // Return Increment Action
       return { value: state.value + 1 };
 
-    // Minus One
+    // Decrement Type
     case DECREMENT:
+      // Return Decrement Action
       return { value: state.value - 1 };
 
-    // Default
+    // Default Type
     default:
+      // Return Default State
       return state;
   }
 };
