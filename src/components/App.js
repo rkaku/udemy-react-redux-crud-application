@@ -3,10 +3,13 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { increment, decrement } from '../actions';
 
+
+// App Component Class
 class App extends Component {
   render() {
     const props = this.props;
 
+    // App Component
     return (
       <React.Fragment>
         <div>value: { props.value }</div>
