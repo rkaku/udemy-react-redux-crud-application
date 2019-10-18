@@ -1,31 +1,24 @@
 import React from 'react';
-// import { Component } from 'react';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <label htmlFor="Click">Foo</label>
-//         <input id="Click" value="Bar" type="button" onClick={() => console.log('I am clicked!')} />
-//       </React.Fragment>
-//     )
-//   }
-// }
-
+// App Component
 const App = () => {
+
+  // Profiles
   const profiles = [
     {
       name: 'Taro',
       age: 10
     },
     {
-      name: 'Hanako',
+      name: 'Naomi',
       age: 5
     },
     {
       name: 'NoName'
     }
   ]
+
+  // Return App Component
   return (
     <div>
       {
@@ -37,20 +30,28 @@ const App = () => {
   )
 }
 
+// User Component
 const User = (props) => {
+  // Return User Component
   return <div>Hi, I am { props.name }, { props.age } years old!</div>
 }
 
+// Default Props
 User.defaultProps = {
   age: 1
 }
 
-// function App() {
+// const App = () => {
 //   return (
-//     <h1>
-//       Hello, World!
-//     </h1>
+//     <div>
+//       <User name={ "Taro" } age={ 10 } />
+//       <User name={ "Naomi" } age={ 5 } />
+//     </div>
 //   );
-// }
+// };
+
+// const User = (props) => {
+//   return <div>{ props.name } : { props.age }</div>;
+// };
 
 export default App;
