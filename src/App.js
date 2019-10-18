@@ -1,19 +1,11 @@
 import React from 'react';
-// import { Component } from 'react';
+// Prop Types
 import PropTypes from 'prop-types';
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <label htmlFor="Click">Foo</label>
-//         <input id="Click" value="Bar" type="button" onClick={() => console.log('I am clicked!')} />
-//       </React.Fragment>
-//     )
-//   }
-// }
-
+// App Component
 const App = () => {
+
+  // Profiles
   const profiles = [
     {
       name: 'Taro',
@@ -28,9 +20,12 @@ const App = () => {
       age: 3
     }
   ]
+
+  // Return App Component
   return (
     <div>
       {
+        // Profiles -> User Component
         profiles.map((profile, index) => {
           return <User name={ profile.name } age={ profile.age } key={ index } />
         })
@@ -39,21 +34,18 @@ const App = () => {
   )
 }
 
+// User Component
 const User = (props) => {
+  // Return User Component
   return <div>Hi, I am { props.name }, { props.age } years old!</div>
 }
 
+// Prop Types
 User.propTypes = {
+  // Name
   name: PropTypes.string,
+  // Age
   age: PropTypes.number.isRequired
 }
-
-// function App() {
-//   return (
-//     <h1>
-//       Hello, World!
-//     </h1>
-//   );
-// }
 
 export default App;
