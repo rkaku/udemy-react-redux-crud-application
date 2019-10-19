@@ -44,11 +44,12 @@ class EventsNew extends Component {
   // EventNew Function
   render() {
     // Props -> handleSubmit -> onSubmit
+    // Pristine & Submitting
     const { handleSubmit, pristine, submitting } = this.props;
 
     // EventNew Component
     return (
-      // From -> Submit
+      // From -> onSubmit -> handleSubmit -> async onSubmit
       <form onSubmit={ handleSubmit(this.onSubmit) }>
         {/* Field -> Title & Body */ }
         <div><Field label="Title" name="title" type="text" component={ this.renderField } /></div>
