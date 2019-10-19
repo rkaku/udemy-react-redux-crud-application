@@ -11,16 +11,20 @@ import reducer from './reducers';
 import EventsIndex from './components/events_index';
 import EventsNew from './components/events_new';
 import EventsShow from './components/events_show';
-import * as serviceWorker from './serviceWorker';
 
+
+// Devtools with Thunk
 const enhancer = process.env.NODE_ENV === 'development' ?
   composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)
+// Create Store <- Reducer, Thunk, DevTools
 const store = createStore(reducer, enhancer);
+
 
 ReactDOM.render(
   <Provider store={ store }>
     <BrowserRouter>
       <Switch>
+        {/* Routes */}
         <Route path="/events/new" component={ EventsNew } />
         <Route path="/events/:id" component={ EventsShow } />
         <Route exact path="/" component={ EventsIndex } />
@@ -30,8 +34,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
