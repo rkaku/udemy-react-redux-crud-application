@@ -24,7 +24,7 @@ class EventsIndex extends Component {
           {/* Link */ }
           <Link to={ `/events/${ event.id }` }>
             { event.title }
-          </Link>;
+          </Link>
         </td>
         <td>{ event.body }</td>
       </tr>

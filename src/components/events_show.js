@@ -22,7 +22,9 @@ class EventsShow extends Component {
 
   // Mounted
   componentDidMount() {
+    // Props -> Match -> params -> ID
     const { id } = this.props.match.params;
+    // Action -> getEvent
     if (id) this.props.getEvent(id);
   }
 
@@ -60,12 +62,12 @@ class EventsShow extends Component {
 
   // EventsShow Component Function
   render() {
-    // Props
+    // Props -> handleSubmit Helper, Pristine, Submitting, Invalid
     const { handleSubmit, pristine, submitting, invalid } = this.props;
 
     // EventsShow Component
     return (
-      // Form -> onSubmit -> handleSubmit -> async onSubmit
+      // Form -> onSubmit -> handleSubmit Helper -> Async onSubmit Method
       <form onSubmit={ handleSubmit(this.onSubmit) }>
         {/* Field Component -> Title, Body */ }
         <div><Field label="Title" name="title" type="text" component={ this.renderField } /></div>
@@ -97,7 +99,10 @@ const validate = values => {
 
 // Map State
 const mapStateToProps = (state, ownProps) => {
+  // Event <- Events <- State
+  // ownProps -> Match -> Params -> ID
   const event = state.events[ownProps.match.params.id];
+  // Return Initial Values & Event
   return { initialValues: event, event };
 }
 // Map Actions
