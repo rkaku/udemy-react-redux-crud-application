@@ -1,57 +1,43 @@
-import React from 'react';
-import { Component } from 'react';
-// Map Connector
-import { connect } from 'react-redux';
-// Actions Types
-import { increment, decrement } from '../actions';
-
+import React, { useReducer } from 'react';
+import {
+  INCREMENT,
+  DECREMENT
+} from '../actions';
+import reducers from '../reducers';
 
 // App Component Class
-class App extends Component {
+const App = () => {
 
-  render() {
-    // Props
-    const props = this.props;
-
-    // App Component
-    return (
-      <React.Fragment>
-        {/* Connected Props */ }
-        <div>value: { props.value }</div>
-        <button onClick={ props.increment }>+1</button>
-        <button onClick={ props.decrement }>-1</button>
-      </React.Fragment>
-    );
+  const initialState = {
+    countReducer: { value: 0 }
   };
+
+  const [state, dispatch] = useReducer(reducers, initialState);
+
+  const increment = () => {
+    dispatch({
+      type: INCREMENT,
+      value: state.countReducer.value
+    });
+  };
+
+  const decrement = () => {
+    dispatch({
+      type: DECREMENT,
+      value: state.countReducer.value
+    });
+  };
+
+  // App Component
+  return (
+    <>
+      {/* Connected Props */ }
+      <div>value: { state.countReducer.value }</div>
+      <button onClick={ increment }>+1</button>
+      <button onClick={ decrement }>-1</button>
+    </>
+  )
 }
 
 
-// Map State -> Props
-const mapStateToProps = state => ({ value: state.count.value });
-
-// Map Actions -> Props
-const mapDispatchToProps = dispatch => ({
-  // Dispatch
-  // dispatch(Actions Types) -> Actions -> Props
-
-  // Increment Type
-  increment: () => dispatch(increment()),
-  // Decrement Type
-  decrement: () => dispatch(decrement())
-});
-
-
-// Connect State with Actions
-export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-
-// Store -> Map -> Props
-// Map
-// => actions/ & reducers/ -> State & Dispatch
-
-// Create & Combine
-// => Store <-> Reducers
-// Provider
-// => index.js -> components/App.js
-// Connect
-// => State <-> Actions
+export default App;

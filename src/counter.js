@@ -1,39 +1,33 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { useReducer, useState } from 'react';
 
 
 // Counter Component Class
-class Counter extends Component {
+const Counter = () => {
 
-  constructor(props) {
-    super(props);
-    // Initialize Data
-    this.state = { count: 0 };
-  };
+  // Initialize Data
+  const [count, setCount] = useState(0);
 
   // Plus Button Method
-  handlePlusButton = () => {
-    this.setState({ count: this.state.count + 1 });
+  const handlePlusButton = () => {
+    setCount({ count: this.state.count + 1 });
   };
 
   // Minus Button Method
-  handleMinusButton = () => {
-    this.setState({ count: this.state.count - 1 });
+  const handleMinusButton = () => {
+    setCount({ count: this.state.count - 1 });
   };
 
-  render() {
-    // Counter Component
-    return (
-      <React.Fragment>
-        { /* Counter Display */ }
-        <div>counter: { this.state.count }</div>
-        { /* Plus Button */ }
-        <button onClick={ this.handlePlusButton }>+1</button>
-        { /* Minus Button */ }
-        <button onClick={ this.handleMinusButton }>-1</button>
-      </React.Fragment>
-    );
-  };
+  // Counter Component
+  return (
+    <React.Fragment>
+      { /* Counter Display */ }
+      <div>counter: { count }</div>
+      { /* Plus Button */ }
+      <button onClick={ handlePlusButton }>+1</button>
+      { /* Minus Button */ }
+      <button onClick={ handleMinusButton }>-1</button>
+    </React.Fragment>
+  );
 };
 
 

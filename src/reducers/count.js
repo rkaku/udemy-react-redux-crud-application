@@ -2,29 +2,30 @@
 import { INCREMENT, DECREMENT } from '../actions';
 
 
-// Initial State
-const initialState = { value: 0 };
-
-
 // Count Reducer
-export default (state = initialState, action) => {
+const countReducer = (state = {}, action) => {
 
-  // Actions Types
-  switch (action.type) {
+  // Type & Value <- Action
+  const { type, value } = action;
 
-    // Increment Type
+  // Switch Types
+  switch (type) {
+
+    // Increment Value
     case INCREMENT:
-      // Return Increment Action
-      return { value: state.value + 1 };
-
-    // Decrement Type
-    case DECREMENT:
-      // Return Decrement Action
-      return { value: state.value - 1 };
-
-    // Default Type
-    default:
-      // Return Default State
+      state = { value: value + 1 }
       return state;
-  }
+
+    // Decrement Value
+    case DECREMENT:
+      state = { value: value - 1 }
+      return state;
+
+    // Default
+    default:
+      return state;
+  };
 };
+
+
+export default countReducer;
