@@ -1,49 +1,48 @@
-import React, { useCallback, useMemo } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 
-function User(props) {
+const Counter = (props) => {
   console.log(props)
   return (
     <>
-      <div>{ props.user.name }</div>
-      <div>{ props.user.age }</div>
+      <h1>count: { props.count }</h1>
+      <button onClick={ props.increment }>+1</button>
+      <button onClick={ props.decrement }>-1</button>
     </>
   )
 }
 
-function App(props) {
+const CounterContainer = (props) => {
+  console.log(props)
+  const [count, setCount] = useState(0)
+  const increment = useCallback(() => {
+    setCount(count + 1)
+  }, [count])
+  const decrement = useCallback(() => {
+    setCount(count - 1)
+  }, [count])
+  return (
+    <>
+      <Counter
+        count={ count }
+        increment={ increment }
+        decrement={ decrement }
+      />
+    </>
+  )
+}
+
+const App = (props) => {
   console.log(props)
   return (
     <>
       <h1>Hello, World!</h1>
-      {
-        props.users.map(user => (
-          <User key={ user.id } user={ user } />
-        ))
-      }
-      <input onChange={ props.onClickHandle }></input>
+      <CounterContainer />
     </>
   )
 }
 
-function Container() {
-  const users = useMemo(() => {
-    return [
-      {
-        id: 1,
-        name: "Taro",
-        age: 10
-      },
-      {
-        id: 2,
-        name: "Naomi",
-        age: 5
-      }
-    ]
-  }, [])
-  const onClickHandle = useCallback(() => { console.log("I am clicked!") }, [])
-  return <App
-    users={ users }
-    onClickHandle={ onClickHandle } />
+const Container = () => {
+  return <App />
 }
 
 export default Container
