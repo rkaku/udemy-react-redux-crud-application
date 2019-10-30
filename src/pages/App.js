@@ -1,4 +1,8 @@
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useMemo, useReducer, useState } from "react"
+import { createStore } from "redux"
+import { Provider } from "react-redux"
+import { initialState, reducer } from '../actions/reducers/App'
+import AppContext from '../hooks/contexts/App'
 
 const Counter = (props) => {
   console.log(props)
@@ -42,7 +46,15 @@ const App = (props) => {
 }
 
 const Container = () => {
-  return <App />
+  const [state, dispatch] = useReducer(reducer, initialState())
+  const store = createStore(reducer)
+  return (
+    <AppContext.Provider value={ { state, dispatch } }>
+      <Provider store={ store }>
+        <App />
+      </Provider>
+    </AppContext.Provider>
+  )
 }
 
 export default Container
