@@ -1,6 +1,5 @@
 const types = {
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT'
+  READ_EVENTS: 'READ_EVENTS'
 }
 
 export default types

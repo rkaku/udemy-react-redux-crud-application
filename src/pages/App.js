@@ -1,56 +1,30 @@
-import React, { useCallback, useMemo, useReducer, useState } from "react"
-import { createStore } from "redux"
-import { Provider } from "react-redux"
+import React from "react"
 import { AppContext, initialState, reducer } from '../actions/reducers/App'
-// import AppContext from '../hooks/contexts/App'
-import { increment, decrement } from "../actions/creators/App"
+import useAxios from '../hooks/customHooks/useAxios'
+// import { createStore } from "redux"
+// import { Provider } from "react-redux"
+import Events from "../components/Events"
+import { readEvents } from "../actions/creators/App"
+import { rests, QUERYSTRING, ROOT_URL } from "../data/rest";
 
-const Counter = (props) => {
-  console.log(props)
-  return (
-    <>
-      <h1>count: { props.count }</h1>
-      <button onClick={ props.increment }>+1</button>
-      <button onClick={ props.decrement }>-1</button>
-    </>
-  )
-}
-
-const CounterContainer = (props) => {
-  console.log(props)
-  const { state, dispatch } = React.useContext(AppContext)
-  const incrementCallback = useCallback(() => {
-    dispatch(increment())
-  }, [dispatch])
-  const decrementCallback = useCallback(() => {
-    dispatch(decrement())
-  }, [dispatch])
-  return (
-    <>
-      <Counter
-        count={ state.value }
-        increment={ incrementCallback }
-        decrement={ decrementCallback }
-      />
-    </>
-  )
-}
-
-const App = (props) => {
-  console.log(props)
+const App = () => {
   return (
     <>
       <h1>Hello, World!</h1>
-      <CounterContainer />
+      <Events />
     </>
   )
 }
 
 const Container = () => {
-  const [state, dispatch] = useReducer(reducer, initialState())
+  const url = ROOT_URL + rests.EVENTS + QUERYSTRING
+  const [loading, error, data] = useAxios(url)
+  const [state, dispatch] = React.useReducer(reducer, initialState())
+  console.log('state', state)
+  React.useEffect(() => dispatch(readEvents(data)), [data])
   // const store = createStore(reducer)
   return (
-    <AppContext.Provider value={ { state, dispatch } }>
+    <AppContext.Provider value={ { loading, error, data } }>
       {/* <Provider store={ store }> */ }
       <App />
       {/* </Provider> */ }

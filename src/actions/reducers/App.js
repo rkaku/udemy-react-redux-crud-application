@@ -1,18 +1,17 @@
 import types from '../types/App'
 import { createContext } from 'react'
+// import _ from 'lodash'
 
 function initialState() {
   return {
-    value: 0
+    events: []
   }
 }
 
 function reducer(state, action) {
   switch (action.type) {
-    case types.INCREMENT:
-      return { ...state, value: state.value + 1 }
-    case types.DECREMENT:
-      return { ...state, value: state.value - 1 }
+    case types.READ_EVENTS:
+      return action.data
     default:
       return state
   }
