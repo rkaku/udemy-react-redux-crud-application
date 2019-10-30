@@ -1,4 +1,5 @@
 import types from '../types/App'
+import { createContext } from 'react'
 
 function initialState() {
   return {
@@ -17,4 +18,6 @@ function reducer(state, action) {
   }
 }
 
-export { initialState, reducer }
+const AppContext = createContext(initialState())
+
+export { AppContext, initialState, reducer }

@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo, useReducer, useState } from "react"
 import { createStore } from "redux"
 import { Provider } from "react-redux"
-import { initialState, reducer } from '../actions/reducers/App'
-import AppContext from '../hooks/contexts/App'
+import { AppContext, initialState, reducer } from '../actions/reducers/App'
+// import AppContext from '../hooks/contexts/App'
+import { increment, decrement } from "../actions/creators/App"
 
 const Counter = (props) => {
   console.log(props)
@@ -17,19 +18,19 @@ const Counter = (props) => {
 
 const CounterContainer = (props) => {
   console.log(props)
-  const [count, setCount] = useState(0)
-  const increment = useCallback(() => {
-    setCount(count + 1)
-  }, [count])
-  const decrement = useCallback(() => {
-    setCount(count - 1)
-  }, [count])
+  const { state, dispatch } = React.useContext(AppContext)
+  const incrementCallback = useCallback(() => {
+    dispatch(increment())
+  }, [dispatch])
+  const decrementCallback = useCallback(() => {
+    dispatch(decrement())
+  }, [dispatch])
   return (
     <>
       <Counter
-        count={ count }
-        increment={ increment }
-        decrement={ decrement }
+        count={ state.value }
+        increment={ incrementCallback }
+        decrement={ decrementCallback }
       />
     </>
   )
@@ -47,12 +48,12 @@ const App = (props) => {
 
 const Container = () => {
   const [state, dispatch] = useReducer(reducer, initialState())
-  const store = createStore(reducer)
+  // const store = createStore(reducer)
   return (
     <AppContext.Provider value={ { state, dispatch } }>
-      <Provider store={ store }>
-        <App />
-      </Provider>
+      {/* <Provider store={ store }> */ }
+      <App />
+      {/* </Provider> */ }
     </AppContext.Provider>
   )
 }
