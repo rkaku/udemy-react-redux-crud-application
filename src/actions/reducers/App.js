@@ -1,5 +1,5 @@
-import types from '../types/App'
 import { createContext } from 'react'
+import types from './../types/App'
 // import _ from 'lodash'
 
 function initialState() {

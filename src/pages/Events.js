@@ -1,7 +1,7 @@
 import React from 'react'
-import Thead from "./Thead";
-import Tbody from './Tbody'
-import { AppContext } from '../actions/reducers/App';
+import Thead from "./../components/Thead"
+import Tbody from './../components/Tbody'
+import { AppContext } from './../actions/reducers/App'
 
 const Table = () => {
   const { loading, error, data } = React.useContext(AppContext)
