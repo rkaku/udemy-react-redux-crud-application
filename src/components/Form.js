@@ -71,11 +71,19 @@ export default function Form() {
             color={ "secondary" }
             disabled={ false }
             component={ Link }
-            to={ "/" }
+            to={ "/events" }
             className={ classes.button }
             buttonLabel={ "Cancel" }
           />
-          {/* <Link to="/">Cancel</Link> */ }
+          <Button
+            variant={ "contained" }
+            color={ "primary" }
+            disabled={ false }
+            component={ Link }
+            to={ "/events" }
+            className={ classes.button }
+            buttonLabel={ "Submit" }
+          />
         </div>
       </form>
     </React.Fragment>
@@ -90,6 +98,6 @@ export default function Form() {
 
 /** Button
 |--------------------------------------------------
-| variant, color, disabled, href, buttonLabel
+| variant, color, disabled, component, to, buttonLabel
 |--------------------------------------------------
 */

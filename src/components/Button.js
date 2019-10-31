@@ -14,7 +14,7 @@ export default function ContainedButtons({
   disabled,
   component,
   to,
-  buttonLabel
+  buttonLabel,
 }) {
   const classes = useStyles();
 
