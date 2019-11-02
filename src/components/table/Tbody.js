@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { asyncReadEvents } from './../../redux/async/events'
+import { asyncEventsIndex } from './../../redux/async/events'
 import Trow from './Trow'
 
 export default function Container () {
@@ -15,7 +15,7 @@ export default function Container () {
 
   const dispatch = useDispatch()
   React.useEffect( () => {
-    dispatch( asyncReadEvents() )
+    dispatch( asyncEventsIndex() )
   }, [ dispatch ] )
   const items = useSelector( state => state.events.items )
   const tbodyDisplay = React.useCallback( () => {

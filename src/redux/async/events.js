@@ -1,24 +1,34 @@
 import axios from 'axios'
-import { createEvent, readEvents } from './../creators/events'
+import { eventCreate, eventsIndex, eventShow } from './../creators/events'
 import heroku from './../../api/heroku'
 
-export function asyncReadEvents () {
+export function asyncEventsIndex () {
   return async dispatch => {
     const response = await axios( {
       method: 'GET',
-      url: heroku.ROOT_URL + heroku.INDEX + heroku.QUERYSTRING
+      url: heroku.ROOT_URL + heroku.EVENTS + heroku.QUERYSTRING
     } )
-    dispatch( readEvents( response ) )
+    dispatch( eventsIndex( response ) )
   }
 }
 
-export function asyncCreateEvent ( values ) {
+export function asyncEventShow ( id ) {
+  return async dispatch => {
+    const response = await axios( {
+      method: 'GET',
+      url: heroku.ROOT_URL + heroku.EVENTS + id + heroku.QUERYSTRING
+    } )
+    dispatch( eventShow( response ) )
+  }
+}
+
+export function asyncEventCreate ( values ) {
   return async dispatch => {
     await axios( {
       method: 'POST',
-      url: heroku.ROOT_URL + heroku.CREATE + heroku.QUERYSTRING,
+      url: heroku.ROOT_URL + heroku.EVENTS + heroku.QUERYSTRING,
       data: values
     } )
-    dispatch( createEvent() )
+    dispatch( eventCreate() )
   }
 }

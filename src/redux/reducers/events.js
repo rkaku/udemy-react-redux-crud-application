@@ -9,11 +9,17 @@ function initialState () {
 export default function ( items = initialState(), action ) {
 
   switch ( action.type ) {
-    case types.READ_EVENTS:
-      return { items: action.response.data }
-    case types.READ_EVENT:
-      return items.find( item => item.id === action.id )
-    case types.CREATE_EVENT:
+    case types.EVENTS_INDEX:
+      return { ...items, items: action.response.data }
+    case types.EVENT_SHOW:
+      return { item: action.response.data }
+    case types.EVENT_CREATE:
+      return items
+    case types.EVENT_EDIT:
+      return items
+    case types.EVENT_UPDATE:
+      return items
+    case types.EVENT_DELETE:
       return items
     default:
       return items

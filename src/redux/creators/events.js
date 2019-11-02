@@ -1,13 +1,13 @@
 import types from '../types/events'
 
-export function readEvents ( response ) {
-  return { type: types.READ_EVENTS, response: response }
+export function eventsIndex ( response ) {
+  return { type: types.EVENTS_INDEX, response: response }
 }
 
-export function readEvent ( id ) {
-  return { type: types.READ_EVENT }
+export function eventShow ( response ) {
+  return { type: types.EVENT_SHOW, response }
 }
 
-export function createEvent () {
-  return { type: types.CREATE_EVENT }
+export function eventCreate () {
+  return { type: types.EVENT_CREATE }
 }
