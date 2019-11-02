@@ -3,7 +3,7 @@ import Thead from './Thead'
 import Tbody from './Tbody'
 export default function Container () {
 
-  function Event () {
+  function Table () {
     return (
       <table>
         <Thead />
@@ -13,6 +13,6 @@ export default function Container () {
   }
 
   return (
-    <Event />
+    <Table />
   )
 }

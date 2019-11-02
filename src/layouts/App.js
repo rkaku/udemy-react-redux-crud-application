@@ -1,26 +1,55 @@
 import React from 'react'
-import './../styles/App.css'
-import { createStore, applyMiddleware } from 'redux'
+import './../styles/App.scss'
+import { BrowserRouter, NavLink, Link, Route, Switch } from "react-router-dom";
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk'
-import reducer from './../redux/reducers/index'
+import { store } from './../redux/reducers/store'
 import EventsIndex from './../pages/EventsIndex'
+import EventNew from './../pages/EventNew'
 
 export default function Container () {
 
   function App () {
     return (
       <div className="App">
-        <h1>Hello, World!</h1>
-        <EventsIndex />
+        <div className="App-header">
+          <ul className="ul-style">
+            <li className="li-style">
+              <NavLink
+                activeClassName="active-link-style"
+                className="App-link"
+                exact
+                to="/">Home</NavLink>
+            </li>
+            <li className="li-style">
+              <NavLink
+                activeClassName="active-link-style"
+                className="App-link"
+                exact
+                to="/index">Index</NavLink>
+            </li>
+            <li className="li-style">
+              <NavLink
+                activeClassName="active-link-style"
+                className="App-link"
+                exact
+                to="/new">New</NavLink>
+            </li>
+          </ul>
+        </div>
+        <Route exact path="/" component={ EventsIndex } />
+        <Route exact path="/index" component={ EventsIndex } />
+        <Route exact path="/new" component={ EventNew } />
       </div>
     )
   }
 
-  const store = createStore( reducer, applyMiddleware( thunk ) )
   return (
     <Provider store={ store }>
-      <App />
+      <BrowserRouter>
+        <Switch>
+          <App />
+        </Switch>
+      </BrowserRouter>
     </Provider>
   )
 }

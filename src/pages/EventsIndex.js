@@ -1,5 +1,5 @@
 import React from 'react';
-import Event from './../components/Event'
+import Table from '../components/table/Table'
 
 export default function Container () {
 
@@ -7,7 +7,7 @@ export default function Container () {
     return (
       <>
         <h3>Events Index</h3>
-        <Event />
+        <Table />
       </>
     )
   }

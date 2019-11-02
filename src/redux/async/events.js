@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { readEvents } from './../creators/events'
+import { createEvent, readEvents } from './../creators/events'
 import heroku from './../../api/heroku'
 
 export function asyncReadEvents () {
@@ -9,5 +9,16 @@ export function asyncReadEvents () {
       url: heroku.ROOT_URL + heroku.INDEX + heroku.QUERYSTRING
     } )
     dispatch( readEvents( response ) )
+  }
+}
+
+export function asyncCreateEvent ( values ) {
+  return async dispatch => {
+    await axios( {
+      method: 'POST',
+      url: heroku.ROOT_URL + heroku.CREATE + heroku.QUERYSTRING,
+      data: values
+    } )
+    dispatch( createEvent() )
   }
 }
