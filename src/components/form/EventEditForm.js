@@ -1,14 +1,26 @@
 import React from 'react'
+import { connect, useSelector } from 'react-redux'
 import { Field, reduxForm } from "redux-form"
 import RenderField from './RenderField'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
-import EventsIndex from './../../pages/EventsIndex'
+// import { asyncEventEdit } from './../../redux/async/events'
+import { eventEdit } from './../../redux/creators/events'
 
-function EventNewForm ( props ) {
-  const { handleSubmit, pristine, reset, submitting, invalid } = props
+let EventEditForm = ( props ) => {
+  const { handleSubmit, load, pristine, reset, submitting, invalid } = props
+  const item = useSelector( state => state.events.item )
+  React.useEffect( () => {
+    load( item )
+  }, [ item, load ] )
   return (
     <form onSubmit={ handleSubmit }>
+      {/* <div>
+        <button
+          type="button"
+          onClick={ () => load( item ) }
+        >Load</button>
+      </div> */}
       <Field
         name="title"
         type="text"
@@ -35,11 +47,17 @@ function EventNewForm ( props ) {
         >Reset</button>
       </div>
       <Link to="/events">Cancel</Link>
-      {/* <Route path="/events" component={ EventsIndex } /> */ }
     </form>
   )
 }
 
-export default reduxForm( {
-  form: 'eventNewForm'
-} )( EventNewForm )
+EventEditForm = reduxForm( {
+  form: 'eventEditForm'
+} )( EventEditForm )
+
+EventEditForm = connect(
+  state => ( { initialValues: state.events.item } ),
+  { load: eventEdit }
+)( EventEditForm )
+
+export default EventEditForm
