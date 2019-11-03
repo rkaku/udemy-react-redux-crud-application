@@ -17,32 +17,32 @@ export default function Container () {
           <ul className="ul-style">
             <li className="li-style">
               <NavLink
+                exact
                 activeClassName="active-link-style"
                 className="App-link"
-                // exact
                 to="/">Home</NavLink>
             </li>
             <li className="li-style">
               <NavLink
                 activeClassName="active-link-style"
                 className="App-link"
-                // exact
                 to="/events">Index</NavLink>
             </li>
             <li className="li-style">
               <NavLink
                 activeClassName="active-link-style"
                 className="App-link"
-                // exact
                 to="/event/new">New</NavLink>
             </li>
           </ul>
         </div>
-        <Route exact path="/" component={ EventsIndex } />
-        <Route exact path="/events" component={ EventsIndex } />
-        <Route exact path="/event/new" component={ EventNew } />
-        <Route exact path="/event/:id" component={ EventShow } />
-        <Route path="/event/edit/:id" component={ EventEdit } />
+        <Switch>
+          <Route path="/event/edit/:id" component={ EventEdit } />
+          <Route path="/event/new" component={ EventNew } />
+          <Route path="/event/:id" component={ EventShow } />
+          <Route path="/events" component={ EventsIndex } />
+          <Route path="/" component={ EventsIndex } />
+        </Switch>
       </div>
     )
   }
@@ -50,9 +50,7 @@ export default function Container () {
   return (
     <Provider store={ store }>
       <Router>
-        <Switch>
-          <App />
-        </Switch>
+        <App />
       </Router>
     </Provider>
   )

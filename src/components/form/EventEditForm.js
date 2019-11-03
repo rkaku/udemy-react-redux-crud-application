@@ -2,7 +2,7 @@ import React from 'react'
 import { connect, useSelector } from 'react-redux'
 import { Field, reduxForm } from "redux-form"
 import RenderField from './RenderField'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
 // import { asyncEventEdit } from './../../redux/async/events'
 import { eventEdit } from './../../redux/creators/events'
@@ -55,9 +55,9 @@ EventEditForm = reduxForm( {
   form: 'eventEditForm'
 } )( EventEditForm )
 
-EventEditForm = connect(
+EventEditForm = withRouter( connect(
   state => ( { initialValues: state.events.item } ),
   { load: eventEdit }
-)( EventEditForm )
+)( EventEditForm ) )
 
 export default EventEditForm

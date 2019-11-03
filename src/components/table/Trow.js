@@ -9,7 +9,7 @@ export default function Container ( props ) {
           { props.item.id }
         </td>
         <td>
-          <Link exact to={ `/event/${ props.item.id }` }>
+          <Link to={ `/event/${ props.item.id }` }>
             { props.item.title }
           </Link>
           { props.item.title }

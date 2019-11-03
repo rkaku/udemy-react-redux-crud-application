@@ -1,9 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from "redux-form"
 import RenderField from './RenderField'
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
-import EventsIndex from './../../pages/EventsIndex'
 
 function EventNewForm ( props ) {
   const { handleSubmit, pristine, reset, submitting, invalid } = props
@@ -35,7 +34,6 @@ function EventNewForm ( props ) {
         >Reset</button>
       </div>
       <Link to="/events">Cancel</Link>
-      {/* <Route path="/events" component={ EventsIndex } /> */ }
     </form>
   )
 }
