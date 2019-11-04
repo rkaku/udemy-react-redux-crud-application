@@ -1,23 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import TableRow from '@material-ui/core/TableRow'
+import TableCell from '@material-ui/core/TableCell'
+
+
 export default function Container ( props ) {
 
   function Trow () {
     return (
-      <tr>
-        <td>
+      <TableRow>
+        <TableCell>
           { props.item.id }
-        </td>
-        <td>
+        </TableCell>
+        <TableCell>
           <Link to={ `/event/${ props.item.id }` }>
             { props.item.title }
           </Link>
-          { props.item.title }
-        </td>
-        <td>
+        </TableCell>
+        <TableCell>
           { props.item.body }
-        </td>
-      </tr>
+        </TableCell>
+      </TableRow>
     )
   }
 

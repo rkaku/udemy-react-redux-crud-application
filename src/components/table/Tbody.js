@@ -2,14 +2,16 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncEventsIndex } from './../../redux/async/events'
 import Trow from './Trow'
+import TableBody from '@material-ui/core/TableBody'
+
 
 export default function Container () {
 
   function Tbody () {
     return (
-      <tbody>
+      <TableBody>
         { tbodyDisplay() }
-      </tbody>
+      </TableBody>
     )
   }
 

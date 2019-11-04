@@ -4,23 +4,19 @@ import { Field, reduxForm } from "redux-form"
 import RenderField from './RenderField'
 import { Link, withRouter } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
-// import { asyncEventEdit } from './../../redux/async/events'
 import { eventEdit } from './../../redux/creators/events'
 
+
 let EventEditForm = ( props ) => {
+
   const { handleSubmit, load, pristine, reset, submitting, invalid } = props
   const item = useSelector( state => state.events.item )
   React.useEffect( () => {
     load( item )
   }, [ item, load ] )
+
   return (
     <form onSubmit={ handleSubmit }>
-      {/* <div>
-        <button
-          type="button"
-          onClick={ () => load( item ) }
-        >Load</button>
-      </div> */}
       <Field
         name="title"
         type="text"

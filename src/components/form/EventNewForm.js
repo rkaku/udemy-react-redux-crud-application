@@ -4,8 +4,11 @@ import RenderField from './RenderField'
 import { Link } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
 
+
 function EventNewForm ( props ) {
+
   const { handleSubmit, pristine, reset, submitting, invalid } = props
+
   return (
     <form onSubmit={ handleSubmit }>
       <Field

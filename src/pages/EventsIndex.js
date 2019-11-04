@@ -6,7 +6,6 @@ export default function Container () {
   function EventsIndex () {
     return (
       <>
-        <h3>Events Index</h3>
         <Table />
       </>
     )
