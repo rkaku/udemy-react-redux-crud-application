@@ -1,7 +1,8 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 import Table from '../components/table/Table'
 import FloatingActionButton from './../components/button/FloatingActionButton'
+import styled from 'styled-components'
+
 
 export default function Container () {
 
@@ -9,9 +10,11 @@ export default function Container () {
     return (
       <>
         <Table />
-        <FloatingActionButton
-          to="event/new"
-        />
+        <ButtonWrapper>
+          <FloatingActionButton
+            to="event/new"
+          />
+        </ButtonWrapper>
       </>
     )
   }
@@ -20,3 +23,8 @@ export default function Container () {
     <EventsIndex />
   )
 }
+
+
+const ButtonWrapper = styled.div`
+
+`

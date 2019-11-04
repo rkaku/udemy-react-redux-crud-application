@@ -1,10 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Thead from './../components/table/Thead'
 import Trow from './../components/table/Trow'
-// import EventEdit from './../pages/EventEdit.js'
 import { asyncEventShow, asyncEventDelete } from './../redux/async/events'
+
+
 export default function Container ( props ) {
 
   function EventShow () {
