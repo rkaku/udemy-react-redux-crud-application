@@ -1,7 +1,7 @@
 import React from 'react'
 import Table from '../components/table/Table'
 import FloatingActionButton from './../components/button/FloatingActionButton'
-import styled from 'styled-components'
+
 
 export default function Container () {
 
@@ -9,11 +9,9 @@ export default function Container () {
     return (
       <>
         <Table />
-        {/* <ButtonWrapper> */}
-          <FloatingActionButton
-            to="event/new"
-          />
-        {/* </ButtonWrapper> */}
+        <FloatingActionButton
+          to="event/new"
+        />
       </>
     )
   }
@@ -22,10 +20,3 @@ export default function Container () {
     <EventsIndex />
   )
 }
-
-
-const ButtonWrapper = styled.div`
-  position: relative;
-  right: 25;
-  bottom: 25;
-`

@@ -7,9 +7,8 @@ import AddIcon from '@material-ui/icons/Add'
 
 export default function FloatingActionButtons ( props ) {
 
-  const classes = useStyles()
   const { to } = props
-
+  const classes = useStyles()
   const renderLink = React.useMemo( () =>
     React.forwardRef( ( linkProps, ref ) => (
       <Link to={ to } { ...linkProps } ref={ ref } />

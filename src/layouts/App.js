@@ -1,5 +1,6 @@
 import React from 'react'
-import { NavLink, Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom"
+import { makeStyles } from '@material-ui/styles'
 import styled from 'styled-components'
 import './../styles/App.scss'
 import EventsIndex from './../pages/EventsIndex'
@@ -9,6 +10,7 @@ import EventEdit from './../pages/EventEdit.js'
 
 
 export default function Container () {
+  const classes = useStyles()
 
   function App () {
     return (
@@ -18,20 +20,20 @@ export default function Container () {
             <Li>
               <NavLink
                 exact
-                activeClassName="active-link-style"
-                className="App-link"
+                activeClassName={ classes.activeLinkStyle }
+                className={ classes.appLinkStyle }
                 to="/">Home</NavLink>
             </Li>
             <Li>
               <NavLink
-                activeClassName="active-link-style"
-                className="App-link"
+                activeClassName={ classes.activeLinkStyle }
+                className={ classes.appLinkStyle }
                 to="/events">Index</NavLink>
             </Li>
             <Li>
               <NavLink
-                activeClassName="active-link-style"
-                className="App-link"
+                activeClassName={ classes.activeLinkStyle }
+                className={ classes.appLinkStyle }
                 to="/event/new">New</NavLink>
             </Li>
           </Ul>
@@ -51,6 +53,16 @@ export default function Container () {
   )
 }
 
+
+const useStyles = makeStyles( {
+  appLinkStyle: {
+    color: '#09d3ac',
+    textDecoration: 'none',
+  },
+  activeLinkStyle: {
+    color: 'darkorange'
+  }
+} )
 
 const Wrapper = styled.div`
   text-align: center;
