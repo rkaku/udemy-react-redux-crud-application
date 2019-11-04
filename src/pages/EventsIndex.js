@@ -3,18 +3,17 @@ import Table from '../components/table/Table'
 import FloatingActionButton from './../components/button/FloatingActionButton'
 import styled from 'styled-components'
 
-
 export default function Container () {
 
   function EventsIndex () {
     return (
       <>
         <Table />
-        <ButtonWrapper>
+        {/* <ButtonWrapper> */}
           <FloatingActionButton
             to="event/new"
           />
-        </ButtonWrapper>
+        {/* </ButtonWrapper> */}
       </>
     )
   }
@@ -26,5 +25,7 @@ export default function Container () {
 
 
 const ButtonWrapper = styled.div`
-
+  position: relative;
+  right: 25;
+  bottom: 25;
 `

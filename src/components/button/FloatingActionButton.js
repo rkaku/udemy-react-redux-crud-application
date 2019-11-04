@@ -31,6 +31,9 @@ export default function FloatingActionButtons ( props ) {
 
 const useStyles = makeStyles( theme => ( {
   fab: {
-    margin: theme.spacing( 1 )
+    margin: theme.spacing( 1 ),
+    position: 'fixed',
+    right: 25,
+    bottom: 25,
   }
 } ) )
