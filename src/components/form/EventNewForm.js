@@ -1,13 +1,13 @@
 import React from 'react'
 import { Field, reduxForm } from "redux-form"
 import RenderField from './RenderField'
-import { Link } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
+import Button from './../button/OutlinedButton'
+import CancelButton from './../button/CancelButton'
 
 
 function EventNewForm ( props ) {
-
-  const { handleSubmit, pristine, reset, submitting, invalid } = props
+  const { handleSubmit, pristine, submitting, invalid } = props
 
   return (
     <form onSubmit={ handleSubmit }>
@@ -26,17 +26,14 @@ function EventNewForm ( props ) {
         validate={ [ required, length ] }
       />
       <div>
-        <button
+        <Button
           type="submit"
+          label="Submit"
+          color="primary"
           disabled={ pristine || submitting || invalid }
-        >Submit</button>
-        <button
-          type="button"
-          disabled={ pristine || submitting }
-          onClick={ reset }
-        >Reset</button>
+        />
       </div>
-      <Link to="/events">Cancel</Link>
+      <CancelButton to="/events" />
     </form>
   )
 }

@@ -12,18 +12,18 @@ const useStyles = makeStyles( theme => ( {
   }
 } ) )
 
-export default function OutlinedButton () {
+export default function OutlinedButton ( { type, label, disabled, color} ) {
   const classes = useStyles()
-
   return (
     <div>
       <Button
+        type={ type }
+        disabled={ disabled }
+        color={ color }
         variant="outlined"
-        color="primary"
-        href="#"
         className={ classes.button }
       >
-        Primary
+        { label }
       </Button>
     </div>
   )
