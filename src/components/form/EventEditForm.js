@@ -2,9 +2,10 @@ import React from 'react'
 import { connect, useSelector } from 'react-redux'
 import { Field, reduxForm } from "redux-form"
 import RenderField from './RenderField'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { required, length } from '../../helpers/validates/eventForm'
 import { eventEdit } from './../../redux/creators/events'
+import CancelButton from './../button/CancelButton'
 
 
 let EventEditForm = ( props ) => {
@@ -18,17 +19,17 @@ let EventEditForm = ( props ) => {
   return (
     <form onSubmit={ handleSubmit }>
       <Field
-        name="title"
         type="text"
-        component={ RenderField }
+        name="title"
         label="Title"
+        component={ RenderField }
         validate={ [ required, length ] }
       />
       <Field
-        name="body"
         type="text"
-        component={ RenderField }
+        name="body"
         label="Body"
+        component={ RenderField }
         validate={ [ required, length ] }
       />
       <div>
@@ -42,7 +43,7 @@ let EventEditForm = ( props ) => {
           onClick={ reset }
         >Reset</button>
       </div>
-      <Link to="/events">Cancel</Link>
+      <CancelButton to="/events" />
     </form>
   )
 }

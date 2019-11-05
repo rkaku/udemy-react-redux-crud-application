@@ -1,5 +1,4 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
@@ -33,6 +32,3 @@ export default function RenderField ( {
     </FormControl>
   )
 }
-
-
-// :TODO: makeStyles -> Form

@@ -29,7 +29,7 @@ export function asyncEventCreate ( values ) {
       url: heroku.ROOT_URL + heroku.EVENT + heroku.QUERYSTRING,
       data: values
     } )
-    dispatch( eventCreate(values) )
+    dispatch( eventCreate( values ) )
   }
 }
 

@@ -12,17 +12,17 @@ function EventNewForm ( props ) {
   return (
     <form onSubmit={ handleSubmit }>
       <Field
-        name="title"
         type="text"
-        component={ RenderField }
+        name="title"
         label="Title"
+        component={ RenderField }
         validate={ [ required, length ] }
       />
       <Field
-        name="body"
         type="text"
-        component={ RenderField }
+        name="body"
         label="Body"
+        component={ RenderField }
         validate={ [ required, length ] }
       />
       <div>
